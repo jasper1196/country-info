@@ -30,3 +30,22 @@
 8. **Voeg de function printCurrencyTypes toe in printCountryInformation**
 
 ## Opdracht 5
+1. **Voeg in de onclick in loadFunctionality twee keer opnieuw getCountryinformation toe**
+2. **Check in de browser op verwachte functionaliteit**
+
+## Opdracht 6
+1. **Herhaal de stappen uit opdracht 4**
+
+## Opdracht 7
+1. **Zet een container in de HTML**
+2. **Maak een referentie naar de container uit main.js**
+3. **Wijs de strings toe aan elementen**
+4. **Append de elementen aan de container**
+
+## Opdracht 8
+1. **Maak een inputveld in index.html**
+2. **Voeg identifier toe aan het inputveld**
+3. **Voeg een eventlistener toe voor de enter knop**
+
+# Opdracht 9
+1. 

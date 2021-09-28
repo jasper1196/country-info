@@ -6,8 +6,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body onload="loadFunctionality()">
-    <button id="search-button">Zoek</button>
+    <div>
+        <input id="country-input" type="text">
+        <button id="search-button">Zoek</button>
+    </div>
 
+    <div id="country-info-results"></div>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
