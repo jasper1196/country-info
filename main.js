@@ -1,3 +1,5 @@
+let countryInput = document.getElementById("country-input");
+
 // Function that returns the information of the specified country
 async function getCountryInformation(country) {
     try {
@@ -8,7 +10,16 @@ async function getCountryInformation(country) {
         printCountryInformation(information.data[0]);
     } catch (e) {
         console.log(e);
+        let infoDiv = document.getElementById("country-info-results");
+        while (infoDiv.firstChild) {
+            infoDiv.removeChild(infoDiv.lastChild);
+        }
+        let errorNode = document.createTextNode("Nothing was entered in the searchbar or the country you were looking for was not found.");
+        let errorText = document.createElement("p");
+        errorText.appendChild(errorNode);
+        infoDiv.appendChild(errorText);
     }
+    countryInput.value = "";
 }
 
 // Function that prints the information from the specified country
@@ -84,11 +95,10 @@ function getLangString(languages) {
 
 // Loads functionalty of buttons etc.
 function loadFunctionality() {
-    document.getElementById("search-button").onclick = () => { getCountryInformation("luxemburg") };
-    let countryInput = document.getElementById("country-input");
+    document.getElementById("search-button").onclick = () => { getCountryInformation(countryInput.value) };
     countryInput.addEventListener("keypress", (e) => {
         if (e.code === "Enter") {
-            getCountryInformation("belgium");
+            getCountryInformation(countryInput.value);
         }
     });
 }

@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hero-img {
+    position: fixed;
+    z-index: -1;
+}
