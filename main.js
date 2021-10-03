@@ -1,4 +1,7 @@
 let countryInput = document.getElementById("country-input");
+let infoDivHeader = document.getElementById("country-info-header");
+let infoDivBody = document.getElementById("country-info-body");
+
 
 // Function that returns the information of the specified country
 async function getCountryInformation(country) {
@@ -10,14 +13,17 @@ async function getCountryInformation(country) {
         printCountryInformation(information.data[0]);
     } catch (e) {
         console.log(e);
-        let infoDiv = document.getElementById("country-info-results");
-        while (infoDiv.firstChild) {
-            infoDiv.removeChild(infoDiv.lastChild);
-        }
+        clearResultsDiv();
+
+        let errorHeaderNode = document.createTextNode("Error");
+        let errorHeaderText = document.createElement("h2");
+        errorHeaderText.appendChild(errorHeaderNode);
+        infoDivHeader.appendChild(errorHeaderText);
+
         let errorNode = document.createTextNode("Nothing was entered in the searchbar or the country you were looking for was not found.");
         let errorText = document.createElement("p");
         errorText.appendChild(errorNode);
-        infoDiv.appendChild(errorText);
+        infoDivBody.appendChild(errorText);
     }
     countryInput.value = "";
 }
@@ -32,19 +38,17 @@ function printCountryInformation(data) {
         let langInfo = getLangString(languages);
         let infoList = [ generalInfo, capitalInfo, currencyInfo, langInfo ] ;
 
-        let infoDiv = document.getElementById("country-info-results");
-        while (infoDiv.firstChild) {
-            infoDiv.removeChild(infoDiv.lastChild);
-        }
+        clearResultsDiv();
 
         let flagImg = document.createElement("img");
+        flagImg.id = "flag-img";
         flagImg.src = flag;
-        infoDiv.appendChild(flagImg);
+        infoDivHeader.appendChild(flagImg);
 
         let countryName = document.createElement("h2");
         let nameNode = document.createTextNode(name);
         countryName.appendChild(nameNode);
-        infoDiv.appendChild(countryName);
+        infoDivHeader.appendChild(countryName);
 
         let infoText = document.createElement("p");
         infoList.map((info) => {
@@ -52,7 +56,7 @@ function printCountryInformation(data) {
             infoText.appendChild(lineText);
             infoText.appendChild(document.createElement("br"));
         });
-        infoDiv.appendChild(infoText);
+        infoDivBody.appendChild(infoText);
     }
 }
 
@@ -93,7 +97,7 @@ function getLangString(languages) {
 }
 
 
-// Loads functionalty of buttons etc.
+// Loads functionality of buttons etc.
 function loadFunctionality() {
     document.getElementById("search-button").onclick = () => { getCountryInformation(countryInput.value) };
     countryInput.addEventListener("keypress", (e) => {
@@ -101,4 +105,16 @@ function loadFunctionality() {
             getCountryInformation(countryInput.value);
         }
     });
+}
+
+// Clears result div
+function clearResultsDiv() {
+    while (infoDivHeader.firstChild) {
+        infoDivHeader.removeChild(infoDivHeader.lastChild);
+    }
+
+    while (infoDivBody.firstChild) {
+        infoDivBody.removeChild(infoDivBody.lastChild);
+    }
+
 }
