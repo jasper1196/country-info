@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Coutry Information - Map</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link rel="stylesheet" href="styles-map.css">
 </head>
-<body>
-
+<body onload="init()">
+    <h1>World regions</h1>
+    <button id="home-btn" onclick="window.location.href='index.html';">Home</button>
+    <img src="./assets/world_map.png" alt="world map" id="world-img">
+    <div id="list-div"></div>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="world.js"></script>
 </body>
 </html>

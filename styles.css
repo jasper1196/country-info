@@ -43,7 +43,7 @@ h1 {
     background-color: rgba(50, 50, 50, 0.3);
 }
 
-#search-button {
+#search-button, #map-button {
     background-color: rgba(20, 20, 20, 0.1);
     border: none;
     font-size: 1em;
@@ -52,7 +52,7 @@ h1 {
     color: rgb(235, 235, 235);
 }
 
-#search-button:hover {
+#search-button:hover, #map-button:hover {
     background-color: rgba(20, 20, 20, 0.3);
 }
 
